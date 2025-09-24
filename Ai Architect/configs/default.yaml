@@ -1,0 +1,53 @@
+# Default training configuration
+seed: 42
+output_dir: outputs
+
+# Data
+data:
+  root: data/hateful_memes
+  train_file: train.jsonl
+  val_file: dev_seen.jsonl
+  image_dir: .
+  batch_size: 32
+  num_workers: 4
+  seq_len: 128
+  balance: true
+
+# Model
+model:
+  dim: 512
+  text_model_name: distilbert-base-uncased
+  image_model_name: openai/clip-vit-base-patch32
+  initial_modules:
+    - {type: transformer, config: {nhead: 8, dropout: 0.3}, reason: "Initial foundation module"}
+    - {type: mlp,         config: {dropout_rate: 0.4},        reason: "Initial alternative pathway"}
+
+# Evolution
+evolution:
+  longevity_threshold: 4
+  cooldown_epochs: 3
+
+# Optimization
+optim:
+  lr: 5e-5
+  weight_decay: 0.01
+  epochs: 50
+  patience: 5
+  max_lr: 5e-5
+  scheduler: onecycle
+  grad_clip: 1.0
+
+# Distributed / Mixed precision
+train:
+  amp: true
+  ddp: false
+  world_size: 1
+  rank: 0
+  local_rank: 0
+
+# Weights & Biases (optional)
+wandb:
+  enabled: false
+  project: evohm
+  run_name: null
+  mode: online  # or offline

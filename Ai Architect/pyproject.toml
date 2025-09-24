@@ -1,0 +1,15 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "evo-hateful-memes"
+version = "0.1.0"
+description = "Evolutionary cross-modal architecture for Hateful Memes"
+authors = [{name = "Anonymous"}]
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = []
+
+[tool.setuptools.packages.find]
+where = ["src"]

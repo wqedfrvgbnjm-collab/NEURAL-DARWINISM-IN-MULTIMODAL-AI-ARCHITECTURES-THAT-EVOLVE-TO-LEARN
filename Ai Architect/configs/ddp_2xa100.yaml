@@ -1,0 +1,10 @@
+# 2xA100 DDP configuration
+inherits: configs/default.yaml
+
+train:
+  amp: true
+  ddp: true
+  world_size: 2
+
+optim:
+  batch_size_scale: 1.0  # keep batch per GPU same as default
