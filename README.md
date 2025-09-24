@@ -142,11 +142,8 @@ python scripts/train.py --config configs/default.yaml \
   --override optim.lr=3e-5 optim.epochs=25 data.batch_size=16 model.dim=512
 ```
 
-### 7. Expected Results
-- With default settings and class-balancing, validation AUC improves over early epochs (exact numbers depend on seed and dataset paths). On the dev-seen split, you should observe AUC > 0.60 after a few epochs with evolution activated.
-- Best checkpoint is saved at `outputs/checkpoints/best_model.pth`.
 
-### 8. Weights & Biases (optional)
+### 7. Weights & Biases (optional)
 Enable in `configs/default.yaml`:
 ```yaml
 wandb:
@@ -157,23 +154,23 @@ wandb:
 ```
 Logged metrics include `train/*`, `val/*`, and `val/best_auc` per epoch.
 
-### 9. Troubleshooting
+### 8. Troubleshooting
 - “No training data found”: verify dataset paths in `configs/default.yaml`.
 - CUDA OOM: lower `data.batch_size` or reduce `model.dim`.
 - CLIP/Transformers download issues: ensure internet access on first run or pre-download models to the Hugging Face cache.
 - Slow dataloader on Windows: reduce `data.num_workers` to 0–2.
 
-### 10. Reproducibility Checklist
+### 9. Reproducibility Checklist
 - Random seeds fixed for Python/Torch.
 - Config files versioned in `configs/`.
 - Best checkpoint saved and evaluation script provided.
 - Determinism caveat for CUDA/cuDNN and DDP.
 
-### 11. License & Acknowledgements
+### 10. License & Acknowledgements
 - This code references ideas and backbones from the Hateful Memes benchmark and Hugging Face Transformers/CLIP.
 - DistilBERT and CLIP are used under their respective licenses.
 
-### 12. Citation
+### 11. Citation
 ```text
 @software{evo_hateful_memes,
   title  = {Evo-Hateful-Memes: Evolutionary Cross-Modal Routing for Hateful Memes},
