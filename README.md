@@ -30,7 +30,7 @@ python scripts/eval.py --config configs/default.yaml --ckpt outputs/checkpoints/
 
 ---
 
-### 1. Abstract (ICLR-style)
+### 1. Abstract 
 We introduce an evolutionary routing framework for multimodal classification on Hateful Memes. Fused image-text features are dynamically routed through a population of diverse neural modules. The system adaptively adds and prunes modules using attention-derived contribution scores and misclassification analysis. This yields a flexible architecture that can specialize over time while avoiding over-parameterization.
 
 ### 2. Method Summary
